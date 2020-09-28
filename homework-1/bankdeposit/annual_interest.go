@@ -1,11 +1,11 @@
-package main
+package bankdeposit
 
 import (
 	"fmt"
 	"math"
 )
 
-func main() {
+func Calculate() {
 	var depositAmount float64
 	var annualInterest float64
 	const period = 5
@@ -18,5 +18,5 @@ func main() {
 
 	sum := depositAmount * math.Pow(1+annualInterest/100, period)
 
-	fmt.Printf("Сумма вклада через %x лет: %.2f", period, sum)
+	fmt.Printf("Сумма вклада через %x лет: %.2f \n", period, sum)
 }
