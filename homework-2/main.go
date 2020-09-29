@@ -6,7 +6,9 @@ import (
 )
 
 func main() {
+
 	var data string
+	var number = 0
 
 	defer func() {
 		if r := recover(); r != nil {
@@ -14,34 +16,41 @@ func main() {
 		}
 	}()
 
-	fmt.Println("Введите целое число: ")
-	fmt.Scanln(&data)
+	for {
+		fmt.Println("Введите целое число, или наберите «exit» для выхода: ")
+		fmt.Scanln(&data)
 
-	num, err := strconv.Atoi(data)
+		if data == "exit" {
+			panic(nil)
+		}
 
-	if err != nil {
-		panic(fmt.Sprintf("Вы ввели некорректное число, работа программы остановлена. %v", err))
+		num, err := strconv.Atoi(data)
+
+		if err == nil {
+			number = num
+			break
+		}
+		fmt.Println("Не удалось распознать число, поробуйте еще раз.")
 	}
 
-	doHomework(num)
+	doHomework(number)
+
 }
 
 func doHomework(num int) {
 
-	// Задача №1.
-
+	fmt.Println("Задача №1.")
 	fmt.Println(isEven(num))
 
-	// Задача №2.
+	fmt.Println("Задача №2.")
 
 	message := "Это число не делится на 3 без остатка"
-
 	if isMultipleOf(3, num) {
 		message = "Это число делится на 3 без остатка"
 	}
 	fmt.Println(message)
 
-	// Задача №3.
+	fmt.Println("Задача №3.")
 	fmt.Println("100 первых чисел Фибоначчи: ")
 
 	fibonacci(100)
