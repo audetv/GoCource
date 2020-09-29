@@ -2,10 +2,11 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 )
 
 func main() {
-	var num int
+	var data string
 
 	defer func() {
 		if r := recover(); r != nil {
@@ -14,7 +15,9 @@ func main() {
 	}()
 
 	fmt.Println("Введите целое число: ")
-	_, err := fmt.Scanf("%d", &num)
+	fmt.Scanln(&data)
+
+	num, err := strconv.Atoi(data)
 
 	if err != nil {
 		panic(fmt.Sprintf("Вы ввели некорректное число, работа программы остановлена. %v", err))
