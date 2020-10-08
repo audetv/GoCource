@@ -1,7 +1,12 @@
 package main
 
-import "github.com/audetv/GoCource/homework-4/shape"
+import (
+	"github.com/audetv/GoCource/homework-4/phones"
+	"github.com/audetv/GoCource/homework-4/shape"
+)
 
 func main() {
 	shape.Process()
+
+	phones.Process()
 }
