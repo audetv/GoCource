@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/audetv/GoCource/homework-3/auto"
-	queue "github.com/audetv/GoCource/homework-3/queue"
+	"github.com/audetv/GoCource/homework-3/queue"
 )
 
 func main() {
