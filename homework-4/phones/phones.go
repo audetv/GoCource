@@ -1,31 +1,40 @@
 package phones
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 type Contact struct {
-	name    string
-	surname string
+	Name  string
+	Phone int64
 }
 
-type phones []int
+type Contacts []Contact
 
-func (p phones) ViewList() {
-	for i, phone := range p {
-		fmt.Printf("\t %v) %v \n", i, phone)
-	}
+func (c Contacts) Len() int {
+	return len(c)
+}
+
+func (c Contacts) Less(i, j int) bool {
+	return c[i].Name < c[j].Name
+}
+
+func (c Contacts) Swap(i, j int) {
+	c[i], c[j] = c[j], c[i]
 }
 
 func Process() {
-	addressBook := make(map[Contact]phones)
 
-	contact1 := Contact{"Миша", "Пашин"}
-	contact2 := Contact{"Вася", "Никитин"}
-
-	addressBook[contact1] = phones{78293467382}
-	addressBook[contact2] = phones{89167253764, 89635437382}
-
-	for contact, ph := range addressBook {
-		fmt.Println(contact.name, contact.surname)
-		ph.ViewList()
+	items := Contacts{
+		{"Иван", 7921123456},
+		{"Pavel", 7551234567},
+		{"Ольга", 7658744567},
+		{"Alina", 7658444947},
+		{"Алексей", 7718481947},
 	}
+
+	sort.Sort(items)
+
+	fmt.Println(items)
 }
