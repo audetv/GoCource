@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/audetv/GoCource/homework-4/calculator"
+	"github.com/audetv/GoCource/homework-4/chess"
 	"github.com/audetv/GoCource/homework-4/phones"
 	"github.com/audetv/GoCource/homework-4/shape"
 )
@@ -14,6 +15,7 @@ func main() {
 
 	calc()
 
+	chess.Process()
 }
 
 func calc() {
