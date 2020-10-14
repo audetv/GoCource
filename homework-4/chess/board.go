@@ -5,14 +5,16 @@ import (
 	"math"
 )
 
+type Point struct {
+	x int
+	y int
+}
+
+var x, y int
+
+var availablePositions []Point
+
 func Process() {
-
-	type Point struct {
-		x int
-		y int
-	}
-
-	var x, y int
 
 	defer func() {
 		if r := recover(); r != nil {
@@ -24,30 +26,32 @@ func Process() {
 
 	_, err := fmt.Scan(&x, &y)
 	if err != nil {
-		panic("Неправильные значения позиции")
+		panic("Неправильное значение позиции")
 	}
 
-	current := Point{x, y}
-	fmt.Println(current)
-
-	var availablePositions []Point
-
+	// Проходим по всем позициям на доске x,y +2/-2 от введенной позиции.
 	for i := x - 2; i <= (x + 2); i++ {
 		for j := y - 2; j <= (y + 2); j++ {
-			if isPositionValid(x, y, i, j) {
-				//selectPosition(i, j)
-				//availablePositions
+			if isPositionValid(i, j) {
+				makePositionAvailable(i, j)
 			}
-			fmt.Println(isPositionValid(x, y, i, j))
 		}
 	}
 
+	fmt.Println(availablePositions)
+
 }
 
-func isPositionValid(x int, y int, i int, j int) bool {
-	println(x, y, i, j)
-	if (math.Abs(float64(x-i)) == 1 && math.Abs(float64(y-j)) == 2) ||
-		(math.Abs(float64(x-i)) == 2 && math.Abs(float64(y-j)) == 2) {
+func makePositionAvailable(i int, j int) {
+	availablePositions = append(availablePositions, Point{i, j})
+}
+
+// Todo сложное условие, подумать как упростить запись.
+func isPositionValid(i int, j int) bool {
+
+	if ((math.Abs(float64(x-i)) == 1 && math.Abs(float64(y-j)) == 2) ||
+		(math.Abs(float64(x-i)) == 2 && math.Abs(float64(y-j)) == 1)) &&
+		(i > -1 && j > -1 && i < 8 && j < 8) {
 		return true
 	}
 	return false
