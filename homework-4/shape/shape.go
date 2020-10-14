@@ -26,16 +26,16 @@ func (t Trapeze) Area() float64 {
 }
 
 func Process() {
-	firstTriangle := Triangle{10, 20}
+	var firstTriangle Shape = Triangle{10, 20}
+	// Я так понимаю, что могу явно не объявлять, не указвать что firstTrapeze - это Shape.
 	firstTrapeze := Trapeze{15, 20, 10}
 
-	var firstShape Shape = firstTriangle
-	var secondShape Shape = firstTrapeze
+	// var firstShape Shape = firstTriangle.
+	// var secondShape Shape = firstTrapeze.
+	// total := SumAreas(firstShape, secondShape),
+	// т.е. это более подробно и явно видно, что передаем Shape.
 
-	fmt.Println(firstShape)
-	fmt.Println(secondShape)
-
-	total := SumAreas(firstShape, secondShape)
+	total := SumAreas(firstTriangle, firstTrapeze)
 	fmt.Println(total)
 
 }
