@@ -3,6 +3,8 @@ package calculator
 import (
 	// Пакет для работы с ошибками
 	"errors"
+	"fmt"
+
 	// Описания типов для построения бинарных деревьев
 	"go/ast"
 	// Пакет для обработки исходных данных
@@ -36,6 +38,12 @@ func Calculate(expr string) (float64, error) {
 	} else {
 		return eval(root)
 	}
+}
+
+// ShowHelp выводит справку по калькулятору.
+func ShowHelp() {
+	fmt.Println("Справка по калькулятору")
+	fmt.Println("В разработке: текст справки, с описанием функций")
 }
 
 type Func struct {

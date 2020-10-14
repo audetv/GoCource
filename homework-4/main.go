@@ -31,10 +31,8 @@ func calc() {
 			break
 		}
 
-		// Функция, которая выводит справку по калькулятору.
 		if input == "help" {
-			fmt.Println("Справка по калькулятору")
-			fmt.Println("В разработке: текст справки, с описанием функций")
+			calculator.ShowHelp()
 			continue
 		}
 
